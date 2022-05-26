@@ -2,6 +2,9 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "empleado.h"
+#include "empleadoPorHoras.h"
+#include "empleadoNomina.h"
 
 
 using namespace std;
@@ -18,5 +21,25 @@ int main() {
         std::cerr << "Error abriendo archivo personas.txt" << std::endl;
         return -1;
     }
+
+    string linea {};
+
+    while (getline(archivoEmpleados, linea)) {
+        // Mientras el getline obtenga alguna línea,
+        // procesar línea
+        istringstream stream(linea);
+
+        int id {};
+        string nombre {};
+        string apellido {};
+        int edad {0};
+
+
+        stream >> nombre >> apellido1 >> apellido2 >> edad;
+
+        
+        }
+
+    archivoEmpleados.close();
 
 }

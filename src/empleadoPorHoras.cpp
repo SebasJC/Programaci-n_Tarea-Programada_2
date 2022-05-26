@@ -8,4 +8,5 @@ EmpleadoPorHoras::EmpleadoPorHoras(int nuevaId, float pagoPorHorasNuevo, int nue
 
 float  EmpleadoPorHoras::SacarPagoNeto() {
     float pagoNeto = this->pagoPorHoras * this->horasTrabajadas;
+    
 }

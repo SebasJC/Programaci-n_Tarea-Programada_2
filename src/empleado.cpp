@@ -18,7 +18,7 @@ Empleado::Empleado(int idNuevo, string nombreNuevo, string apellidoNuevo, string
 
 float Empleado::CalculoPago() {
     if (this->tipoEmpleado = 1) {
-        //La duda
+        
     }
 
     if (this->tipoEmpleado = 2) {

@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -18,6 +19,7 @@ class Empleado {
     string nombreSupervisor = "";
     string apellidoSupervisor = "";
     int salarioNeto = 0;
+    vector<Empleado *> subordinados;
 
     public:
     Empleado();
