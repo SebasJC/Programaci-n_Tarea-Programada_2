@@ -26,8 +26,15 @@ class Empleado {
     Empleado(int idNuevo, string nombreNuevo, string apellidoNuevo, string correoNuevo, int tipoNuevo, int nuevaIdSupervisor);
     ~Empleado();
 
-    virtual float CalculoPago();
-    virtual string EncontrarSupervisor(); 
+    void InsertarSubordinado(Empleado *subordinado);
+
+    int ObtenerId();
+    string ObtenerNombre();
+    string ObtenerApellido();
+
+    virtual float CalculoPago() = 0;
+    void AsignarSupervisor(Empleado *supervisor); 
+    vector<Empleado *> ObtenerSubordinados();
 
     friend istream& operator >> (istream &o, Empleado *empleado);
     friend ostream& operator << (ostream &o, const Empleado *empleado);

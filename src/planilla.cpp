@@ -18,3 +18,13 @@ void Planilla::AgregarEmpleado(int idNuevo, string nombreNuevo, string apellidoN
     this->indiceEmpleados.insert( pair<int, Empleado *>(idNuevo, nuevoEmpleado) );
 
 }
+
+string Planilla::EncontrarEmpleado(int idEmpleado) {
+
+    Empleado *empleadoConElNombre = this->indiceEmpleados.at(idEmpleado);
+    return empleadoConElNombre->ObtenerNombre();
+
+    Empleado *empleadoConElApellido = this->indiceEmpleados.at(idEmpleado);
+    return empleadoConElApellido->ObtenerApellido();
+
+}

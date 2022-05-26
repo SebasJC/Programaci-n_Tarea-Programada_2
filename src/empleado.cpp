@@ -1,4 +1,5 @@
 #include "empleado.h"
+#include <string>
 
 Empleado::Empleado() {
 
@@ -16,16 +17,42 @@ Empleado::Empleado(int idNuevo, string nombreNuevo, string apellidoNuevo, string
     this->salarioNeto = 0;
 }
 
-float Empleado::CalculoPago() {
-    if (this->tipoEmpleado = 1) {
-        
+Empleado::~Empleado() {
+
+    for (Empleado *subordinado : this->subordinados)
+    {
+        delete subordinado;
     }
 
-    if (this->tipoEmpleado = 2) {
-        //La duda x2
-    }
 }
 
-string Empleado::EncontrarSupervisor() {
-    //La duda x3
+void Empleado::InsertarSubordinado(Empleado *subordinado) 
+{
+    this->subordinados.push_back(subordinado);
+
+}
+
+int Empleado::ObtenerId() {
+
+    return this->id;
+}
+
+string Empleado::ObtenerNombre() {
+
+    return this->nombre;
+}
+
+string Empleado::ObtenerApellido() {
+
+    return this->apellido;
+}
+
+void Empleado::AsignarSupervisor(Empleado *supervisor)
+{
+    
+}
+
+vector<Empleado *> Empleado::ObtenerSubordinados()
+{
+    return this->subordinados;
 }
