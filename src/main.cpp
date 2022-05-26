@@ -32,12 +32,14 @@ int main() {
         int id {};
         string nombre {};
         string apellido {};
-        int edad {0};
+        string correo {};
+        int tipoEmpleado {};
+        int idSupervisor {};
+       
 
 
-        stream >> nombre >> apellido1 >> apellido2 >> edad;
-
-        
+        stream >> id >> nombre >> apellido >> correo >> tipoEmpleado >> idSupervisor;
+   
         }
 
     archivoEmpleados.close();

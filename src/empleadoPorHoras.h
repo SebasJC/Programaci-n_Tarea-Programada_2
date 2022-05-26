@@ -4,6 +4,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "empleado.h"
 
 using namespace std;
 
@@ -18,7 +19,7 @@ class EmpleadoPorHoras {
     EmpleadoPorHoras(int nuevaId, float pagoPorHorasNuevo, int nuevasHorasTrabajadas);
     ~EmpleadoPorHoras();
 
-    virtual float SacarPagoNeto();
+    virtual float CalculoPago();
 
     friend istream& operator >> (istream &o, EmpleadoPorHoras *empleadoPorHoras);
     friend ostream& operator << (ostream &o, const EmpleadoPorHoras *empleadoPorHoras);

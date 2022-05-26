@@ -1,5 +1,7 @@
 #include "planilla.h"
 #include "empleado.h"
+#include "empleadoPorHoras.h"
+#include "empleadoNomina.h"
 
 Planilla::Planilla(int idJefe, string nombreJefe, string apellidoJefe, string correoJefe, int tipoEmpleadoJefe, int idSupervisorJefe) {
     this->jefe = new Empleado(idJefe, nombreJefe, apellidoJefe, correoJefe, tipoEmpleadoJefe, idSupervisorJefe);

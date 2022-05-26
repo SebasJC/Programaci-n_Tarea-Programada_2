@@ -5,7 +5,7 @@ EmpleadoNomina::EmpleadoNomina(int nuevaId, float pagoMensualNuevo) {
     this->pagoMensual = pagoMensualNuevo;
 }
 
-float  EmpleadoNomina::SacarPagoNeto() {
+float  EmpleadoNomina::CalculoPago() {
     float retencion = (this->pagoMensual * 7) / 100;
     float pagoNeto = this->pagoMensual - retencion;
 }
