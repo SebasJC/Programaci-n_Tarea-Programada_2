@@ -37,9 +37,12 @@ int main() {
         int idSupervisor {};
        
 
-
         stream >> id >> nombre >> apellido >> correo >> tipoEmpleado >> idSupervisor;
    
+        if (tipoEmpleado == 1) {
+            EmpleadoNomina *empleado = new EmpleadoNomina();
+            empleado-> CalculoPago();
+        }
         }
 
     archivoEmpleados.close();

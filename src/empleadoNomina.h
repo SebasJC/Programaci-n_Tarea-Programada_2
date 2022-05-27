@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class EmpleadoNomina {
+class EmpleadoNomina: public Empleado {
 
     int id;
     float pagoMensual;

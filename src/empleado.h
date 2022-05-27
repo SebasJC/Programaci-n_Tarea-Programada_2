@@ -10,6 +10,7 @@ using namespace std;
 
 class Empleado {
 
+    protected:
     int id;
     string nombre;
     string apellido;
