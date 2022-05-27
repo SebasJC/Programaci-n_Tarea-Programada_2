@@ -32,6 +32,8 @@ class Empleado {
     int ObtenerId();
     string ObtenerNombre();
     string ObtenerApellido();
+    int ObtenerTipo();
+    int ObtenerIdSupervisor();
 
     virtual float CalculoPago() = 0;
     void AsignarSupervisor(Empleado *supervisor); 

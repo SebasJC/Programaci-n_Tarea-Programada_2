@@ -16,6 +16,7 @@ class EmpleadoPorHoras {
 
     public:
     EmpleadoPorHoras();
+    EmpleadoPorHoras(int id);
     EmpleadoPorHoras(int nuevaId, float pagoPorHorasNuevo, int nuevasHorasTrabajadas);
     ~EmpleadoPorHoras();
 

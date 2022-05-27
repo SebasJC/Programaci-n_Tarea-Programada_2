@@ -15,6 +15,7 @@ class EmpleadoNomina: public Empleado {
 
     public:
     EmpleadoNomina();
+    EmpleadoNomina(int id);
     EmpleadoNomina(int nuevaId, float pagoMensualNuevo);
     ~EmpleadoNomina();
 

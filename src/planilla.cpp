@@ -3,21 +3,46 @@
 #include "empleadoPorHoras.h"
 #include "empleadoNomina.h"
 
-Planilla::Planilla(int idJefe, string nombreJefe, string apellidoJefe, string correoJefe, int tipoEmpleadoJefe, int idSupervisorJefe) {
-    this->jefe = new Empleado(idJefe, nombreJefe, apellidoJefe, correoJefe, tipoEmpleadoJefe, idSupervisorJefe);
-    this->indiceEmpleados.insert( std::pair<int, Empleado *>(idJefe, this->jefe) );
+Planilla::Planilla(Empleado *jefe) {
+    int id = this->jefe->ObtenerId();
+    int tipo = this->jefe->ObtenerTipo();
+
+    if (tipo == 1) {
+        EmpleadoNomina *jefe = new EmpleadoNomina(id);
+        this->indiceEmpleados.insert( std::pair<int, Empleado *>(id, this->jefe) );
+    }
+
+    if (tipo == 2) {
+        EmpleadoPorHoras *jefe = new EmpleadoPorHoras(id);
+        this->indiceEmpleados.insert( std::pair<int, Empleado *>(id, this->jefe) );
+    }
+    
+
 }
 
-void Planilla::AgregarEmpleado(int idNuevo, string nombreNuevo, string apellidoNuevo, string correoNuevo, int tipoNuevo, int nuevaIdSupervisor) {
+void Planilla::AgregarEmpleado(Empleado *empleadoNuevo) {
+
+    int id = this->empleadoNuevo->ObtenerId();
+    int tipo = this->empleadoNuevo->ObtenerTipo();
+    int nuevaIdSupervisor = this->empleadoNuevo->ObtenerIdSupervisor();
+
+    if (tipo == 1) {
+        EmpleadoNomina *nuevoEmpleado = new EmpleadoNomina(id);
+        this->indiceEmpleados.insert( std::pair<int, Empleado *>(id, this->empleadoNuevo) );
+    }
+
+    if (tipo == 2) {
+        EmpleadoPorHoras *nuevoEmpleado = new EmpleadoPorHoras(id);
+        this->indiceEmpleados.insert( std::pair<int, Empleado *>(id, this->empleadoNuevo) );
+    }
     
-    Empleado *nuevoEmpleado = new Empleado(idNuevo, nombreNuevo, apellidoNuevo,correoNuevo, tipoNuevo, nuevaIdSupervisor);
 
     Empleado *empleadoSupervisor = this->indiceEmpleados.at(nuevaIdSupervisor);
 
-    empleadoSupervisor->InsertarSubordinado(nuevoEmpleado);
-    nuevoEmpleado->AsignarSupervisor(empleadoSupervisor);
+    empleadoSupervisor->InsertarSubordinado(empleadoNuevo);
+    empleadoNuevo->AsignarSupervisor(empleadoSupervisor);
 
-    this->indiceEmpleados.insert( pair<int, Empleado *>(idNuevo, nuevoEmpleado) );
+    this->indiceEmpleados.insert( pair<int, Empleado *>(id, empleadoNuevo) );
 
 }
 

@@ -47,6 +47,16 @@ string Empleado::ObtenerApellido() {
     return this->apellido;
 }
 
+int Empleado::ObtenerTipo() {
+
+    return this->tipoEmpleado;
+}
+
+int Empleado::ObtenerIdSupervisor() {
+
+    return this->idSupervisor;
+}
+
 void Empleado::AsignarSupervisor(Empleado *supervisor)
 {
     
