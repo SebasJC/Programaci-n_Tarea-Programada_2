@@ -19,6 +19,8 @@ class Empleado {
     int idSupervisor;
     string nombreSupervisor = "";
     string apellidoSupervisor = "";
+    int salarioMensual = 0;
+    int salarioPorHoras = 0;
     int salarioNeto = 0;
     vector<Empleado *> subordinados;
 

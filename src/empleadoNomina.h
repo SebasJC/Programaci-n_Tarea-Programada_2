@@ -10,13 +10,21 @@ using namespace std;
 
 class EmpleadoNomina: public Empleado {
 
+    protected:
     int id;
+    string nombre;
+    string apellido;
+    string correo;
+    int tipoEmpleado;
+    int idSupervisor;
     float pagoMensual;
+    float salarioNeto;
+    
 
     public:
     EmpleadoNomina();
     EmpleadoNomina(int id);
-    EmpleadoNomina(int nuevaId, float pagoMensualNuevo);
+    EmpleadoNomina(int idNuevo, string nombreNuevo, string apellidoNuevo, string correoNuevo, int tipoNuevo, int nuevaIdSupervisor, float pagoMensualNuevo);
     ~EmpleadoNomina();
 
     virtual float CalculoPago();

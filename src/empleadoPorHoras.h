@@ -11,13 +11,19 @@ using namespace std;
 class EmpleadoPorHoras {
 
     int id;
+    string nombre;
+    string apellido;
+    string correo;
+    int tipoEmpleado;
+    int idSupervisor;
     float pagoPorHoras;
     int horasTrabajadas;
+    float salarioNeto;
 
     public:
     EmpleadoPorHoras();
     EmpleadoPorHoras(int id);
-    EmpleadoPorHoras(int nuevaId, float pagoPorHorasNuevo, int nuevasHorasTrabajadas);
+    EmpleadoPorHoras(int idNuevo, string nombreNuevo, string apellidoNuevo, string correoNuevo, int tipoNuevo, int nuevaIdSupervisor, float pagoPorHorasNuevo, int nuevasHorasTrabajadas);
     ~EmpleadoPorHoras();
 
     virtual float CalculoPago();

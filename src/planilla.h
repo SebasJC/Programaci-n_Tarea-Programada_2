@@ -14,6 +14,7 @@ class Planilla {
     map<int, Empleado *> indiceEmpleados;
 
     public:
+    Planilla();
     Planilla(Empleado *jefe);
     ~Planilla();
 
