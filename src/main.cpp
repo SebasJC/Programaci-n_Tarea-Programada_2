@@ -11,24 +11,7 @@
 using namespace std;
 
 int main() {
-
     Planilla *planilla = new Planilla();
-
-    ifstream archivoEmpleados("personas.txt", std::ifstream::in); // Por default abriendo como texto
-    
-
-    if (!archivoEmpleados.is_open())
-    {
-        std::cerr << "Error abriendo archivo personas.txt" << std::endl;
-        return -1;
-    }
-
-    string linea {};
-
-    while (getline(archivoEmpleados, linea)) {
-        // Mientras el getline obtenga alguna línea,
-        // procesar línea
-        istringstream stream(linea);
 
         int id {};
         string nombre {};
@@ -36,15 +19,34 @@ int main() {
         string correo {};
         int tipoEmpleado {};
         int idSupervisor {};
-       
+        string nombreSupervisor = "";
+        string apellidoSupervisor = "";
+        float salarioNeto = 0;
+
+    string stringDeSalida = "";
+
+    ifstream archivoEmpleados("personas.txt", std::ifstream::in); // Por default abriendo como texto
+    
+
+    if (!archivoEmpleados.is_open()) {
+        std::cerr << "Error abriendo archivo personas.txt" << std::endl;
+        return -1;
+    }
+
+    string linea {};
+
+    while (getline(archivoEmpleados, linea)) {
+        string nombreSupervisor = "";
+        string apellidoSupervisor = "";
+        float salarioNeto = 0;
+
+        istringstream stream(linea);
 
         stream >> id >> nombre >> apellido >> correo >> tipoEmpleado >> idSupervisor;
    
         if (tipoEmpleado == 1) {
-            float salarioNeto = 0;
             ifstream archivoNomina("nomina.txt", std::ifstream::in); // Por default abriendo como texto
-            if (!archivoNomina.is_open())
-            {
+            if (!archivoNomina.is_open()) {
                 std::cerr << "Error abriendo archivo nomina.txt" << std::endl;
                 return -1;
             }
@@ -52,7 +54,7 @@ int main() {
             string lineaNomina {};
 
             while (getline(archivoNomina, lineaNomina)) {
-                istringstream stream(linea);
+                istringstream stream(lineaNomina);
 
                 int idNomina {};
                 float pagoMensual {};
@@ -67,18 +69,16 @@ int main() {
         }
 
         if (tipoEmpleado == 2) {
-            float salarioNeto = 0;
             ifstream archivoHoras("horastrabajadas.txt", std::ifstream::in); // Por default abriendo como texto
-            if (!archivoHoras.is_open())
-            {
-                std::cerr << "Error abriendo archivo nomina.txt" << std::endl;
+            if (!archivoHoras.is_open()) {
+                std::cerr << "Error abriendo archivo horastrabajadas.txt" << std::endl;
                 return -1;
             }
 
             string lineaHoras {};
 
             while (getline(archivoHoras, lineaHoras)) {
-                istringstream stream(linea);
+                istringstream stream(lineaHoras);
 
                 int idHoras {};
                 float pagoPorHoras {};
@@ -93,8 +93,47 @@ int main() {
             
         }
 
-
+        ifstream archivoBuscaJefes("personas.txt", std::ifstream::in); // Por default abriendo como texto
+        if (!archivoBuscaJefes.is_open()) {
+            std::cerr << "Error abriendo archivo personas.txt" << std::endl;
+            return -1;
         }
+
+        string lineaBuscaJefes;
+
+        while (getline(archivoBuscaJefes, lineaBuscaJefes)) {
+            istringstream stream(lineaBuscaJefes);
+
+            int idPosibleSupervisor {};
+            string nombrePosibleSupervisor {};
+            string apellidoPosibleSupervisor {};
+            string correoPosibleSupervisor {};
+            int tipoEmpleadoPosibleSupervisor {};
+            int idSupervisorPosibleSupervisor {};
+
+            stream >> idPosibleSupervisor >> nombrePosibleSupervisor >> apellidoPosibleSupervisor >> correoPosibleSupervisor >> tipoEmpleadoPosibleSupervisor >> idSupervisorPosibleSupervisor;
+
+            if (idPosibleSupervisor == idSupervisor) {
+                nombreSupervisor = nombrePosibleSupervisor;
+                apellidoSupervisor = apellidoPosibleSupervisor;
+            }
+            
+        }
+
+
+    }
+
+    ofstream ofs("Reporte.csv", std::ifstream::out); // Por default abriendo como texto
+
+    if (!ofs.is_open())
+    {
+        std::cerr << "Error con archivo Reporte.csv" << std::endl;
+        return -1;
+    }
+
+    ofs << id << ", " << nombre << ", " << apellido << ", " << nombreSupervisor << ", " << apellidoSupervisor << ", " << salarioNeto << endl;
+
+    ofs.close();
 
     archivoEmpleados.close();
 
